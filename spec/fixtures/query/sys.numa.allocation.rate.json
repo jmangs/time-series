@@ -1,0 +1,17 @@
+[
+  {
+    "metric": "sys.numa.allocation",
+    "tags": { "host": "opentsdb.foo.com" },
+    "aggregateTags": [
+      "type",
+      "node"
+    ],
+    "dps": {
+      "1421676714": 0.02,
+      "1421676729": 0.05,
+      "1421676744": 0,
+      "1421676759": 0.01,
+      "1421676774": 0.02
+    }
+  }
+]

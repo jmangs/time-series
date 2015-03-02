@@ -1,0 +1,17 @@
+[
+  {
+    "metric": "sys.numa.zoneallocs",
+    "tags": {"host": "opentsdb.foo.com"},
+    "aggregateTags": [
+      "type",
+      "node"
+    ],
+    "dps": {
+      "1421676714": 3,
+      "1421676729": 2,
+      "1421676744": 55,
+      "1421676759": 1,
+      "1421676774": 3
+    }
+  }
+]

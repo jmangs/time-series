@@ -1,0 +1,17 @@
+LineLength:
+  Enabled: true
+  Max: 128
+
+Encoding:
+  Enabled: false
+
+CaseIndentation:
+  Enabled: false
+
+# Annoying warning when dealing with Unix timestamps
+NumericLiterals:
+  Enabled: false
+
+# MethodLength is superseded by Reek's TooManyStatements smell-finder.
+MethodLength:
+  Enabled: false

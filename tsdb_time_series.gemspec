@@ -6,13 +6,13 @@ require File.expand_path('../lib/time_series/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ['Uday Jarajapu', 'Jan Mangs', 'Ravikumar Gudipati']
   gem.email         = %w(uday.jarajapu@opower.com jmangs@gmail.com ravikumar.gudipati@opower.com)
-  gem.description = 'Provides a set of tools for working with time series data in OpenTSDB data store'
-  gem.summary = 'OpenTSDB Gem'
+  gem.description   = 'Provides a set of tools for working with time series data in OpenTSDB data store'
+  gem.summary       = 'OpenTSDB Gem'
 
   gem.files         = `git ls-files`.split($ORS)
   gem.executables   = gem.files.grep(/^bin\//).map { |f| File.basename(f) }
   gem.test_files    = gem.files.grep(/^(test|spec|features)\//)
-  gem.name          = 'time_series'
+  gem.name          = 'tsdb_time_series'
   gem.require_paths = %w(lib)
   gem.version       = Opower::TimeSeries::VERSION
 

@@ -1,19 +1,19 @@
-## TimeSeries
+## time-series
 
-TimeSeries is a Ruby Gem for OpenTSDB that provides core tools when working with an OpenTSDB data store. With TimeSeries, you can search for registered metrics, tag keys and tag values, read from and write to the OpenTSDB, and submit multiple simultaneous queries to an OpenTSDB cluster.
+`time-series` is a Ruby Gem for OpenTSDB that provides core tools when working with an OpenTSDB data store. With `time-series`, you can search for registered metrics, tag keys and tag values, read from and write to the OpenTSDB, and submit multiple simultaneous queries to an OpenTSDB cluster.
 
 ### Installation
 
 Download the Gem from a standard Gem server like rubygems.org and install it:
 
-    gem install time_series
+    gem install time-series
 
 Alternatively, build it from source and install it:
 
     git clone https://github.com/opower/time-series.git
     cd time-series
-    gem build time_series.gemspec
-    gem install time_series-4.0.0.gem
+    gem build time-series.gemspec
+    gem install time-series-4.0.0.gem
 
 ### Usage
 Once you have the OpenTSDB cluster set up, we can configure the TimeSeries Gem to talk to the API. The first step would be configuring a TimeSeries client. If no host is specified, the client connects to localhost by default. The client connects to port 4242 by default.
@@ -22,7 +22,7 @@ Once you have the OpenTSDB cluster set up, we can configure the TimeSeries Gem t
 
 ```ruby
 client = Opower::TimeSeries::TSClient.new('opentsdb.foo.com', 4242)
-client.configure({ :version => '2.0', :dry_run => false, :validation => true })
+client.configure({ version: '2.0', dry_run: false, validation: true })
 ```
 
 Here is a table that lists options supported by the TimeSeries client:
@@ -49,10 +49,10 @@ You can use a TimeSeries client to push telnet/netcat style writes to OpenTSDB. 
 
 ```ruby
 metric_config = {
-        :name => 'proc.stat.cpu',
-        :timestamp => Time.now.to_i,
-        :value => 10,
-        :tags => {:host => 'somehost.foo.com', :type => 'iowait'}
+        name: 'proc.stat.cpu',
+        timestamp: Time.now.to_i,
+        value: 10,
+        tags: { host: 'somehost.foo.com', type: 'iowait' }
 }
 
 metric = Opower::TimeSeries::Metric.new(metric_config)
@@ -66,11 +66,11 @@ We can use a TimeSeries client to read metric data from an OpenTSDB cluster. To 
 
 ```ruby
 query_config = {
-        :format => :png,
-        :start => '2013/01/01-01:00:00',
-        :end => '2013/02/01-01:00:00',
-        :m => [{ :aggregator => 'sum', :metric => 'proc.stat.cpu', :tags => {:type => 'iowait'} }],
-        :nocache => true
+        format: :png,
+        start: '2013/01/01-01:00:00',
+        end: '2013/02/01-01:00:00',
+        m: [{ aggregator: 'sum', metric: 'proc.stat.cpu', tags: { type: 'iowait' } }],
+        nocache: true
 }
 
 query = Opower::TimeSeries::Query.new(query_config)
@@ -89,7 +89,7 @@ The `Query` object accepts the following parameters:
 
 Here is a sample metrics object , that goes into the :m object .
 ```ruby
-:m => [{ :aggregator => 'sum', :metric => 'proc.stat.cpu', :tags => {:type => 'iowait', :version => 2.1} }]
+m: [{ aggregator: 'sum', metric: 'proc.stat.cpu', tags: { type: 'iowait', version: 2.1 } }]
 ```
 
 Other options available to the REST API can be used here as well. Here is a list of options that have been tested to work with this gem. See the [OpenTSDB documentation](http://opentsdb.net/http-api.html#/q_Parameters) for more information :
@@ -118,10 +118,10 @@ Other options available to the REST API can be used here as well. Here is a list
 
 ```ruby
 query_config = {
-        :format => :ascii,
-        :start => 14535353,
-        :end => 16786786,
-        :m => [{ :aggregator => 'sum', :metric => 'proc.stat.cpu', :rate => true, :tags => {:type => 'iowait'} }]
+        format: :ascii,
+        start: 14535353,
+        end: 16786786,
+        m: [{ aggregator: 'sum', metric: 'proc.stat.cpu', rate: true, tags: { type: 'iowait' } }]
 }
 
 query = Opower::TimeSeries::Query.new(query_config)
@@ -130,10 +130,10 @@ client.run_query(query)
 
 ```ruby
 query_config = {
-        :format => :json,
-        :start => '3m-ago',
-        :m => [{ :aggregator => 'max', :metric => 'proc.stat.cpu', :tags => {:type => 'iowait'} }],
-        :nocache => true
+        format: :json,
+        start: '3m-ago',
+        m: [{ aggregator: 'max', metric: 'proc.stat.cpu', tags: { type: 'iowait' } }],
+        nocache: true
 }
 
 query = Opower::TimeSeries::Query.new(query_config)
@@ -148,10 +148,10 @@ If you need to query multiple metrics at the same time, TimeSeries provides supp
 queries = []
 3.times do
     query_config = {
-            :format => :ascii,
-            :start => 14535353,
-            :end => 16786786,
-            :m => [{ :aggregator => 'sum', :metric => 'proc.stat.cpu', :rate => true, :tags => {:type => 'iowait'} }]
+            format: :ascii,
+            start: 14535353,
+            end: 16786786,
+            m: [{ aggregator: 'sum', metric: 'proc.stat.cpu', rate: true, tags: { type: 'iowait' } }]
     }
 
     queries << Opower::TimeSeries::Query.new(query_config)

@@ -1,3 +1,7 @@
+# v4.1.2
+- Renamed gem to `time-series` for public use. (`time_series` is already taken)
+- Cleaned up README.md a little bit
+
 # v4.1.1
 - Bumped Rubocop to `~> 0.28.0` and updated dependencies
 - Fixed new Rubocop warnings
